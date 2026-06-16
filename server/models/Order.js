@@ -36,6 +36,11 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: 0.0
     },
+    paymentMethod: {
+        type: String,
+        enum: ['COD', 'Credit Card', 'Debit Card', 'UPI', 'Net Banking', 'Wallet'],
+        default: 'COD'
+    },
     paymentStatus: {
         type: String,
         enum: ['Pending', 'Completed', 'Failed'],
@@ -43,8 +48,8 @@ const orderSchema = new mongoose.Schema({
     },
     orderStatus: {
         type: String,
-        enum: ['Processing', 'Shipped', 'Delivered', 'Cancelled'],
-        default: 'Processing'
+        enum: ['Pending', 'Confirmed', 'Packed', 'Shipped', 'Out for Delivery', 'Delivered', 'Cancelled'],
+        default: 'Pending'
     }
 }, { timestamps: true });
 

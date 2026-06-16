@@ -5,17 +5,26 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a product title'],
         trim: true,
-        maxlength: [100, 'Title cannot be more than 100 characters']
+        maxlength: [200, 'Title cannot be more than 200 characters']
     },
     description: {
         type: String,
         required: [true, 'Please add a description'],
-        maxlength: [1000, 'Description cannot be more than 1000 characters']
+        maxlength: [2000, 'Description cannot be more than 2000 characters']
     },
     category: {
         type: String,
         required: [true, 'Please select a category'],
-        enum: ['Electronics', 'Fashion', 'Shoes', 'Watches', 'Beauty', 'Home & Kitchen', 'Grocery', 'Books', 'Mobiles', 'Laptops', 'Gaming', 'Accessories']
+        enum: [
+            'Electronics', 'Mobiles', 'Laptops', 'Watches', 'Shoes', 'Footwear',
+            'Beauty', 'Home & Kitchen', 'Grocery', 'Books', 'Gaming', 'Accessories',
+            "Men's Fashion", "Women's Fashion", "Kids Fashion"
+        ]
+    },
+    gender: {
+        type: String,
+        enum: ['Men', 'Women', 'Kids', 'Unisex'],
+        default: 'Unisex'
     },
     brand: {
         type: String,
@@ -31,7 +40,10 @@ const productSchema = new mongoose.Schema({
     features: {
         type: [String]
     },
-
+    specifications: {
+        type: Map,
+        of: String
+    },
     images: {
         type: [String],
         default: ['https://via.placeholder.com/400x400?text=Product+Image']
@@ -50,6 +62,10 @@ const productSchema = new mongoose.Schema({
     numReviews: {
         type: Number,
         default: 0
+    },
+    isFeatured: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 

@@ -167,7 +167,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map((cat, index) => (
-            <Link to="/products" key={index} className="group relative h-48 md:h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md">
+            <Link to={`/products?category=${cat.name}`} key={index} className="group relative h-48 md:h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md">
               <img src={cat.image} alt={cat.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <h3 className="absolute bottom-6 left-6 text-white font-bold text-xl md:text-2xl">{cat.name}</h3>
@@ -199,7 +199,7 @@ export default function Home() {
 
       {/* 5. Promotional Ad Banner */}
       <section className="max-w-[1400px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg group cursor-pointer" onClick={() => navigate('/products')}>
+        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg group cursor-pointer" onClick={() => navigate('/products?category=Shoes')}>
           <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 flex flex-col justify-center p-10">
@@ -208,7 +208,7 @@ export default function Home() {
             <span className="text-white font-bold underline decoration-2 underline-offset-4">Shop Collection</span>
           </div>
         </div>
-        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg group cursor-pointer" onClick={() => navigate('/products')}>
+        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg group cursor-pointer" onClick={() => navigate('/products?category=Electronics')}>
           <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#3a86ff]/80 to-transparent"></div>
           <div className="absolute inset-0 flex flex-col justify-center p-10">

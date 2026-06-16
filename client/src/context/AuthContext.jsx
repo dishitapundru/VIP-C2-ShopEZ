@@ -30,7 +30,9 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const res = await axios.post('/api/auth/login', { email, password });
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('shopez_user', JSON.stringify(res.data.user));
     setUser(res.data.user);
+    return res.data.user;
   };
 
   const register = async (name, email, password) => {
